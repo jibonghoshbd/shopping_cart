@@ -11,6 +11,27 @@ function productNumber(product, price, isIncreasing) {
     const productTotal = document.getElementById(`${product}-total`);
 
     productTotal.innerText = productInputNumber * price;
+
+    // calculate total 
+    getCalculateTotalAmount()
+}
+// get input value 
+function getInputValue(product) {
+    const productInput = document.getElementById(`${product}-input`);
+    const productInputNumber = parseInt(productInput.value);
+    return productInputNumber;
+}
+
+// calculate total 
+function getCalculateTotalAmount() {
+    const phoneTotal = getInputValue('phone') * 1219;
+    const caseTotal = getInputValue('case') * 59;
+    const subTotalAmount = phoneTotal + caseTotal;
+    const tax = subTotalAmount / 10;
+    const total = subTotalAmount + tax;
+    document.getElementById('sub-total').innerText = subTotalAmount;
+    document.getElementById('tax').innerText = tax;
+    document.getElementById('total').innerText = total;
 }
 
 // handel phone plus btn
@@ -35,7 +56,19 @@ document.getElementById('case-minus').addEventListener('click', function () {
 
 })
 
+function getRemoveItem(product) {
+    const productRemove = document.getElementById(`${product}-remove`);
+    productRemove.style.display = 'none';
 
+}
 
+// handel phne remove item 
+document.getElementById('phone-remove-item').addEventListener('click', function () {
+    getRemoveItem('phone')
+})
 
+// handel case remove item 
+document.getElementById('case-remove-item').addEventListener('click', function () {
+    getRemoveItem('case')
+})
 
